@@ -1,10 +1,20 @@
 <?php
-
 /**
+ * XDIE.
+ *
  * Copy this function somewhere that is accessible from the entire project.
  * Example: Into your "bootstrap".
+ *
+ * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
+ * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
+ * @version 1.0
+ * @package ar.com.eduardocuomo
+ * @copyright Eduardo Daniel Cuomo
  */
 
+/**
+ * Debug.
+ */
 function XDIE() {
     $trace = debug_backtrace();
     // Call
