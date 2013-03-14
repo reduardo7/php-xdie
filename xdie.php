@@ -2,12 +2,9 @@
 /**
  * XDIE.
  *
- * Copy this function somewhere that is accessible from the entire project.
- * Example: Into your "bootstrap".
- *
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
- * @version 1.0
+ * @version 1.1
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -92,7 +89,7 @@ function XDIE() {
         $params = array();
         foreach(func_get_args() as $i => $var) $params[] = $i;
     }
-//     echo "#---"; var_dump($params); echo "---#"; exit(1);
+// echo "#---"; var_export($params); echo "---#"; exit(1);
 
     $s = "<!-- " . str_repeat("-", 120) . " -->"; $t = "\n$s"; $n = "\n$t";
 
@@ -103,15 +100,15 @@ function XDIE() {
             . "<h2 onclick=\"javascript:_xdieSH('XDIE-BODY')\" align=\"center\" id=\"XDIE\">:: XDIE ::</h2><script type=\"text/javascript\">"
             . "function _xdieSH(i){var e=document.getElementById(i);if(e.style.display==''){e.style.display='none';}else{e.style.display='';}}"
             . "function _xdieShow(i){_xdieSH('var'+i);}"
-            . "function _xdieView(i,v){document.getElementById('varPrint'+i).style.display=v?'':'none';document.getElementById('varDump'+i).style.display=v?'none':'';}"
+            . "function _xdieView(i,v){document.getElementById('varPrint'+i).style.display=v?'':'none';document.getElementById('varExport'+i).style.display=v?'none':'';}"
             . "</script><div id=\"XDIE-BODY\">\n$call";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[$i] = $params[$i]";
             echo "<hr/><h3><a title=\"Show/Hide\" href=\"javascript:_xdieShow($i)\">$v</a></h3>";
-            echo "<div id=\"var$i\" style=\"font-size: 11px;\"><a href=\"javascript:_xdieView($i,true)\">print_r</a> <a href=\"javascript:_xdieView($i,false)\">var_dump</a><pre id=\"varPrint$i\" style=\"$PS\">\n\n<!-- ######### $v ######### -->\n";
-            print_r($var);
-            echo "\n$s</pre><pre id=\"varDump$i\" style=\"$PS;display:none\">\n";
-            var_dump($var);
+            echo "<div id=\"var$i\" style=\"font-size: 11px;\"><a href=\"javascript:_xdieView($i,true)\">print_r</a> <a href=\"javascript:_xdieView($i,false)\">var_export</a><pre id=\"varPrint$i\" style=\"$PS\">\n\n<!-- ######### $v ######### -->\n";
+            echo htmlentities(print_r($var, true));
+            echo "\n$s</pre><pre id=\"varExport$i\" style=\"$PS;display:none\">\n";
+            echo htmlentities(var_export($var, true));
             echo "$n</pre></div>";
         }
         echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*?-->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
@@ -123,7 +120,7 @@ function XDIE() {
             echo "\n######### $v\n";
             print_r($var);
             echo "\n$s\n";
-            var_dump($var);
+            var_export($var);
             echo $n;
         }
         echo "\n\nEND XDIE";
@@ -131,26 +128,3 @@ function XDIE() {
     echo "\n\n";
     exit();
 }
-
-
-
-
-
-
-
-
-
-// EXAMPLE SHOULD BE PASS
-
-$x =   trim( " hola ")  ;  XDIE  (
-
-    array(1 => 2, "a\"'\\" =>
-trim($x)), $student_id, // THIS IS A COMMENT!
-
-/*THIS IS AN OTHER COMMENT!
-
-$x
-*/
-
-$x
-)  ; exit ("FIN!!!");
