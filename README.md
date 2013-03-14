@@ -9,3 +9,8 @@ Using this function, you can see a "HTML" with details, and a readable text in c
 
 Is ideal when you do not have a Framework or another utility to help us in the development, and we need
 a simple way to "simple" to analyze some variables.
+
+## Screenshots
+
+http://www.freeimagehosting.net/aaie8
+http://www.freeimagehosting.net/mdxpw
