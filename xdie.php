@@ -4,7 +4,7 @@
  *
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
- * @version 1.1
+ * @version 1.2
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
