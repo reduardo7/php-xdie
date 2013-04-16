@@ -122,8 +122,8 @@ function XDIE() {
             echo "\n{$s}</pre><pre id=\"varExport{$i}\" style=\"{$PS};{$DN}\">\n";
             echo htmlentities(var_export($var, true));
             // HTML
-            $var_html = strtr($var, array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
-            echo "{$n}</pre><div id=\"varHTML{$i}\" style=\"{$PS};{$DN}>{$var_html}</div></div>";
+            $var_html = strtr(strval($var), array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
+            echo "{$n}</pre><div id=\"varHTML{$i}\" style=\"{$PS};{$DN}\">{$var_html}</div></div>";
         }
         echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*?-->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
     } else {
