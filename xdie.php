@@ -101,13 +101,15 @@ function XDIE() {
         // HTTP | Browser
         $PS = "margin:5;padding:5px;background:#DDDDDD;";
         $DN = "display:none";
-        echo "\n<!-- :: XDIE :: -->{$n}<h1 style=\"color:#FF0000;\" onclick=\"javascript:_xdieSH('XDIE-BODY');window.location='#XDIE';\">XDIE</h1><div id=\"XDIE-CONT\" style=\"z-index:99999;border:2px solid #AAAAAA;font-family:monospace;position:absolute;display:block;top:0px;left:0px;background:#FFAAAA;width:100%;\">"
+        echo "\n<!-- :: XDIE :: -->{$n}"
+            . "<h1 style=\"color:#FF0000;\" onclick=\"javascript:_xdieSH('XDIE-BODY');window.location='#XDIE';\">XDIE</h1>"
+            . "<div id=\"XDIE-CONT\" style=\"z-index:99999;border:2px solid #AAAAAA;font-family:monospace;position:absolute;display:block;top:0px;left:0px;background:#FFAAAA;width:100%;\">"
             . "<h2 onclick=\"javascript:_xdieSH('XDIE-BODY')\" align=\"center\" id=\"XDIE\">:: XDIE ::</h2><script type=\"text/javascript\">"
             . "function _xdieSH(i){var e=document.getElementById(i);if(e.style.display==''){e.style.display='none';}else{e.style.display='';}}"
             . "function _xdieShow(i){_xdieSH('var'+i);}"
             . "function _xdieVS(i,s){document.getElementById(i).style.display=s?'':'none';}"
             . "function _xdieView(i,v){_xdieVS('varPrint'+i,(v==1));_xdieVS('varExport'+i,(v==2));_xdieVS('varHTML'+i,(v==3));}"
-            . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}";
+            . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}<br/><a href=\"javascript:void(0)\" onclick=\"if(confirm('Reload page?'))location.reload(true);\">Reload page</a>";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
             echo "<hr/><h3><a title=\"Show/Hide\" href=\"javascript:_xdieShow({$i})\">{$v}</a></h3>";
