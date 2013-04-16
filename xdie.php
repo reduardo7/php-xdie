@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.2
+ * @version 1.3
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -100,20 +100,30 @@ function XDIE() {
     ) {
         // HTTP | Browser
         $PS = "margin:5;padding:5px;background:#DDDDDD;";
+        $DN = "display:none";
         echo "\n<!-- :: XDIE :: -->{$n}<h1 style=\"color:#FF0000;\" onclick=\"javascript:_xdieSH('XDIE-BODY');window.location='#XDIE';\">XDIE</h1><div id=\"XDIE-CONT\" style=\"z-index:99999;border:2px solid #AAAAAA;font-family:monospace;position:absolute;display:block;top:0px;left:0px;background:#FFAAAA;width:100%;\">"
             . "<h2 onclick=\"javascript:_xdieSH('XDIE-BODY')\" align=\"center\" id=\"XDIE\">:: XDIE ::</h2><script type=\"text/javascript\">"
             . "function _xdieSH(i){var e=document.getElementById(i);if(e.style.display==''){e.style.display='none';}else{e.style.display='';}}"
             . "function _xdieShow(i){_xdieSH('var'+i);}"
-            . "function _xdieView(i,v){document.getElementById('varPrint'+i).style.display=v?'':'none';document.getElementById('varExport'+i).style.display=v?'none':'';}"
+            . "function _xdieVS(i,s){document.getElementById(i).style.display=s?'':'none';}"
+            . "function _xdieView(i,v){_xdieVS('varPrint'+i,(v==1));_xdieVS('varExport'+i,(v==2));_xdieVS('varHTML'+i,(v==3));}"
             . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
             echo "<hr/><h3><a title=\"Show/Hide\" href=\"javascript:_xdieShow({$i})\">{$v}</a></h3>";
-            echo "<div id=\"var{$i}\" style=\"font-size: 11px;\"><a href=\"javascript:_xdieView({$i},true)\">print_r</a> <a href=\"javascript:_xdieView({$i},false)\">var_export</a><pre id=\"varPrint{$i}\" style=\"{$PS}\">\n\n<!-- ######### {$v} ######### -->\n";
+            echo "<div id=\"var{$i}\" style=\"font-size: 11px;\">";
+            echo "<a href=\"javascript:_xdieView({$i},1)\">print_r</a>";
+            echo " <a href=\"javascript:_xdieView({$i},2)\">var_export</a>";
+            echo " <a href=\"javascript:_xdieView({$i},3)\">HTML</a>";
+            // print_r
+            echo "<pre id=\"varPrint{$i}\" style=\"{$PS}\">\n\n<!-- ######### {$v} ######### -->\n";
             echo htmlentities(print_r($var, true));
-            echo "\n{$s}</pre><pre id=\"varExport{$i}\" style=\"{$PS};display:none\">\n";
+            // var_export
+            echo "\n{$s}</pre><pre id=\"varExport{$i}\" style=\"{$PS};{$DN}\">\n";
             echo htmlentities(var_export($var, true));
-            echo "{$n}</pre></div>";
+            // HTML
+            $var_html = strtr($var, array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
+            echo "{$n}</pre><div id=\"varHTML{$i}\" style=\"{$PS};{$DN}>{$var_html}</div></div>";
         }
         echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*?-->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
     } else {
