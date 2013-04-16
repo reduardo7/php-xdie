@@ -137,6 +137,9 @@ function XDIE() {
             print_r($var);
             echo "\n{$s}\n";
             var_export($var);
+            echo "\n{$s}\n";
+            $var_html = strtr(strval($var), array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
+            var_export($var_html);
             echo $n;
         }
         echo "\n\nEND XDIE";
