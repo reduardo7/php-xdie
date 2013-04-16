@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.3
+ * @version 1.5
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -92,7 +92,7 @@ function XDIE() {
     }
     // echo "#---"; var_export($params); echo "---#"; exit(1);
 
-    $s = "<!-- " . str_repeat("-", 120) . " -->"; $t = "\n$s"; $n = "\n$t";
+    $s = "<!-- " . str_repeat("-", 120) . " XDIE -->"; $t = "\n$s"; $n = "\n$t";
 
     if (
         (isset($_SERVER["HTTP_HOST"])) // Is Browser
@@ -118,7 +118,7 @@ function XDIE() {
             echo " <a href=\"javascript:_xdieView({$i},2)\">var_export</a>";
             echo " <a href=\"javascript:_xdieView({$i},3)\">HTML</a>";
             // print_r
-            echo "<pre id=\"varPrint{$i}\" style=\"{$PS}\">\n\n<!-- ######### {$v} ######### -->\n";
+            echo "<pre id=\"varPrint{$i}\" style=\"{$PS}\">\n\n<!-- ######### {$v} ######### XDIE -->\n";
             echo htmlentities(print_r($var, true));
             // var_export
             echo "\n{$s}</pre><pre id=\"varExport{$i}\" style=\"{$PS};{$DN}\">\n";
@@ -127,7 +127,7 @@ function XDIE() {
             $var_html = strtr(strval($var), array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
             echo "{$n}</pre><div id=\"varHTML{$i}\" style=\"{$PS};{$DN}\">{$var_html}</div></div>";
         }
-        echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*?-->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
+        echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*? XDIE -->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
     } else {
         // Console or Ajax Request
         echo "\n:: XDIE ::\n{$call}\n\n";
@@ -139,7 +139,7 @@ function XDIE() {
             var_export($var);
             echo "\n{$s}\n";
             $var_html = strtr(strval($var), array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
-            var_export($var_html);
+            echo $var_html;
             echo $n;
         }
         echo "\n\nEND XDIE";
