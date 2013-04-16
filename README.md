@@ -12,6 +12,5 @@ a simple way to "simple" to analyze some variables.
 
 ## Screenshots
 
-http://www.freeimagehosting.net/aaie8
-
-http://www.freeimagehosting.net/enegh
+![HTML](http://eduardocuomo.com.ar/github/img/xdie/XDIE-var_export.png)
+![Source Page](http://eduardocuomo.com.ar/github/img/xdie/XDIE-source-page.png)
