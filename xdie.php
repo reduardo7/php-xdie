@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.5
+ * @version 1.6
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -109,7 +109,10 @@ function XDIE() {
             . "function _xdieShow(i){_xdieSH('var'+i);}"
             . "function _xdieVS(i,s){document.getElementById(i).style.display=s?'':'none';}"
             . "function _xdieView(i,v){_xdieVS('varPrint'+i,(v==1));_xdieVS('varExport'+i,(v==2));_xdieVS('varHTML'+i,(v==3));}"
-            . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}<br/><a href=\"javascript:void(0)\" onclick=\"if(confirm('Reload page?'))location.reload(true);\">Reload page</a>";
+            . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}<br/><a href=\"javascript:void(0)\" onclick=\"if(confirm('Reload page?'))location.reload(true);\">Reload page</a>"
+            . " | <a href=\"javascript:void(0)\" onclick=\"_xdieSH('_xdiebacktrace');\">Back Trace</a><pre id=\"_xdiebacktrace\" style=\"{$PS};{$DN}\">\n\n";
+        debug_print_backtrace();
+        echo "\n{$s}</pre>";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
             echo "<hr/><h3><a title=\"Show/Hide\" href=\"javascript:_xdieShow({$i})\">{$v}</a></h3>";
