@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.6
+ * @version 1.7
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -111,7 +111,7 @@ function XDIE() {
             . "function _xdieView(i,v){_xdieVS('varPrint'+i,(v==1));_xdieVS('varExport'+i,(v==2));_xdieVS('varHTML'+i,(v==3));}"
             . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}<br/><a href=\"javascript:void(0)\" onclick=\"if(confirm('Reload page?'))location.reload(true);\">Reload page</a>"
             . " | <a href=\"javascript:void(0)\" onclick=\"_xdieSH('_xdiebacktrace');\">Back Trace</a><pre id=\"_xdiebacktrace\" style=\"{$PS};{$DN}\">\n\n";
-        debug_print_backtrace();
+        debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 30);
         echo "\n{$s}</pre>";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
