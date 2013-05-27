@@ -133,6 +133,7 @@ function XDIE() {
         echo "</div><script type=\"text/javascript\">var t=document.getElementById('XDIE-CONT').getElementsByTagName('pre');for(i in t){e=t[i];if(typeof(e)!='object')break;e.innerHTML=e.innerHTML.replace(/<!--.*? XDIE -->/g,'').trim();}</script></div>\n\n<!-- END XDIE -->";
     } else {
         // Console or Ajax Request
+        echo '<pre id="XDIE">';
         echo "\n:: XDIE ::\n{$call}\n\n";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
@@ -145,7 +146,7 @@ function XDIE() {
             echo $var_html;
             echo $n;
         }
-        echo "\n\nEND XDIE";
+        echo "\n\nEND XDIE</pre>";
     }
     echo "\n\n";
     exit();
