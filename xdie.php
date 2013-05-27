@@ -137,11 +137,11 @@ function XDIE() {
         echo "\n:: XDIE ::\n{$call}\n\n";
         foreach (func_get_args() as $i => $var) {
             $v = "PARAM[{$i}] = {$params[$i]}";
-            echo "\n######### {$v}\n";
+            echo "\n######### {$v}\n[print_r] : ";
             print_r($var);
-            echo "\n{$s}\n";
+            echo "\n{$s}\n[var_export] : ";
             var_export($var);
-            echo "\n{$s}\n";
+            echo "\n{$s}\n[HTML] : ";
             $var_html = strtr(strval($var), array("\n" => ' ', "\r" => '', "\t" => ' ')); // Remove extra spaces and end of lines
             echo $var_html;
             echo $n;
