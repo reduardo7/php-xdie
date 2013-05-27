@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.7
+ * @version 1.8
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
