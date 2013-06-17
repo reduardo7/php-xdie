@@ -110,7 +110,7 @@ function XDIE() {
             . "function _xdieVS(i,s){document.getElementById(i).style.display=s?'':'none';}"
             . "function _xdieView(i,v){_xdieVS('varPrint'+i,(v==1));_xdieVS('varExport'+i,(v==2));_xdieVS('varHTML'+i,(v==3));}"
             . "</script><div id=\"XDIE-BODY\">\n\n{$call}{$n}<br/><a href=\"javascript:void(0)\" onclick=\"if(confirm('Reload page?'))location.reload(true);\">Reload page</a>"
-            . " | <a href=\"javascript:void(0)\" onclick=\"_xdieSH('_xdiebacktrace');\">Back Trace</a><pre id=\"_xdiebacktrace\" style=\"{$PS};{$DN}\">\n\n";
+            . " | <a href=\"javascript:void(0)\" onclick=\"_xdieSH('_xdiebacktrace');\">Backtrace</a><pre id=\"_xdiebacktrace\" style=\"{$PS};{$DN}\">\n\n";
         debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 30);
         echo "\n{$s}</pre>";
         foreach (func_get_args() as $i => $var) {
