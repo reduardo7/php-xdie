@@ -5,7 +5,7 @@
  * @license Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @author Eduardo Daniel Cuomo <eduardo.cuomo.ar@gmail.com>
  * @url https://github.com/reduardo7/php-xdie/
- * @version 1.8
+ * @version 1.9
  * @package ar.com.eduardocuomo
  * @copyright Eduardo Daniel Cuomo
  */
@@ -102,7 +102,7 @@ function XDIE() {
         $PS = "margin:5;padding:5px;background:#DDDDDD;";
         $DN = "display:none";
         echo "\n<!-- :: XDIE :: -->{$n}"
-            . "<h1 style=\"color:#FF0000;\" onclick=\"javascript:_xdieSH('XDIE-BODY');window.location='#XDIE';\">XDIE</h1>"
+            . "<h1 style=\"color:#FF0000;\">XDIE</h1>"
             . "<div id=\"XDIE-CONT\" style=\"z-index:99999;border:2px solid #AAAAAA;font-family:monospace;position:absolute;display:block;top:0px;left:0px;background:#FFAAAA;width:100%;\">"
             . "<h2 onclick=\"javascript:_xdieSH('XDIE-BODY')\" align=\"center\" id=\"XDIE\">:: XDIE ::</h2><script type=\"text/javascript\">"
             . "function _xdieSH(i){var e=document.getElementById(i);if(e.style.display==''){e.style.display='none';}else{e.style.display='';}}"
